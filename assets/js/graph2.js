@@ -28,17 +28,16 @@ class LineChart {
         for (let i = 0; i < this.data.length; i++) {
             for (let j = 0; j < 11; j++) {
                 if (this.data[i][j]!=':') {
-                    this.crimesByYear.push(parseInt(this.data[i][j]));
+                    this.crimesByYear[i] = parseInt(this.data[i][j]);
                 } else {
-                    this.crimesByYear.push(0);
+                    this.crimesByYear[i] = 0;
                 }  
             }
+            console.log(this.crimesByYear);
         }
         console.log(this.data);
         // console.log(this.crimesByYear);
     }
-    
-
     
     /**
      * Get an array with all countries for wich we have datas to show
@@ -60,7 +59,6 @@ class LineChart {
             this.datasets.push(dataset);
             // console.log(dataset);
         }
-
     }
 
     // returnChartParameter() {
