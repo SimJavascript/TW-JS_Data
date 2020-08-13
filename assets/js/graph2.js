@@ -24,22 +24,7 @@ class LineChart {
     getCrimes() {
         for (let i = 2; i < this.originData.length; i++) {
             this.data.push(this.originData[i].slice(2));
-            for (let j = 0; j < 10; j++) {
-                this.crimesByYear.push(this.data[j]);
-                
-            }
-            console.log(this.crimesByYear);
         }
-        // this.data[j].length
-        // console.log(this.data);
-        // for (let i = 0; i < this.data.length; i++) {
-        //     for (let j = 0; j < this.data[i].length; j++) {
-        //         this.crimesByYear.push(this.data[i][j]);
-        //         console.log(this.crimesByYear);
-                
-        //     }
-            
-        // }
     }
 
     /**
@@ -65,23 +50,23 @@ class LineChart {
     }
 
 
-//     return (type: this.type,
-//     data: {
-//         labels: this.labels,
-//         datasets: [{
-//             label: this.label,
-//             data: this.data,
-//         }]
-//     },
-//     options: {
-//         scales: {
-//             yAxes: [{
-//                 ticks: {
-//                     beginAtZero: true
-//                 }
-//             }]
-//         }
-//     })  
+    return (type: this.type,
+    data: {
+        labels: this.labels,
+        datasets: [{
+            label: this.label,
+            data: this.data,
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    })  
 }
 
 finalObject = new LineChart('table1');
