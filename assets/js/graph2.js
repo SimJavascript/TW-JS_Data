@@ -58,7 +58,6 @@ class LineChart {
             dataset.label = this.countries[i];
             dataset.data = this.data[i]; 
             this.datasets.push(dataset);
-
             // console.log(dataset);
         }
 
