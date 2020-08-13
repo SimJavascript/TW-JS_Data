@@ -25,6 +25,12 @@ for (let i = 2; i < dataBelgium.length; i++) {
     belgiumCrimes.push(parseFloat(dataBelgium[i]));
 }
 
+let crimes2 = [];
+for (let i = 2; i < dataBulgaria.length; i++) {
+    crimes2.push(parseFloat(dataBulgaria[i]))
+    
+}
+
 let labels = years;
 var ctx = document.getElementById("myChart").getContext('2d');
 var myChart = new Chart(ctx, {
@@ -38,7 +44,7 @@ var myChart = new Chart(ctx, {
       }, {
         label: "My Second dataset",
         fill: false,
-        data: belgiumCrimes,
+        data: crimes2,
       }]
     },
     options: {
