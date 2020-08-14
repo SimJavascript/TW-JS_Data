@@ -1,8 +1,8 @@
 const divChart = document.createElement("div");
 divChart.setAttribute("id", "chartContainer");
 divChart.setAttribute("style", "height: 300px; width: 100%;")
-const title = document.getElementById("firstHeading");
-title.after(divChart);
+const firstHeading = document.getElementById("firstHeading");
+firstHeading.after(divChart);
 
 var dataPoints = [];
 $.getJSON("https://canvasjs.com/services/data/datapoints.php", function (data) {
@@ -11,7 +11,7 @@ $.getJSON("https://canvasjs.com/services/data/datapoints.php", function (data) {
     });
     chart = new CanvasJS.Chart("chartContainer", {
         title: {
-            text: "Live Chart with dataPoints from External JSON"
+            text: "Real-Time Crimes"
         },
         data: [{
             type: "line",
