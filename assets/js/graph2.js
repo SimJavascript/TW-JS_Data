@@ -3,7 +3,7 @@ class LineChart {
         this.originTable = document.getElementById(table);
         this.originData = [...this.originTable.rows].map(t => [...t.children].map(u => u.innerText));
         this.type = 'line';
-        this.labels = [];
+        this.years = [];
         this.countries = [];
         this.datasets = [];
         this.data = [];
@@ -15,7 +15,7 @@ class LineChart {
      * Get an array with all years to display as label on X-axis
      */
     getYears() {
-        this.labels = this.originData[1].filter(function (el) { return el; });
+        this.years = this.originData[1].filter(function (el) { return el; });
     }
 
     /**
@@ -23,20 +23,22 @@ class LineChart {
      */
     getCrimes() {
         for (let i = 2; i < this.originData.length; i++) {
-            this.data.push(this.originData[i].slice(2));
+            this.data.push(parseInt(this.originData[i].slice(2)));
         }
-
-        // let crimesInt = [];
-        // for (let i = 0; i < this.data.length; i++) {
-        //    for (let j = 0; j < this.data[i].length; j++) {
-        //        crimesInt[i] = 'ok';
-               
-        //    }
-            
-        // }
+        for (let i = 0; i < this.data.length; i++) {
+            for (let j = 0; j < 11; j++) {
+                if (this.data[i][j]!=':') {
+                    this.crimesByYear[i] = parseInt(this.data[i][j]);
+                } else {
+                    this.crimesByYear[i] = 0;
+                }  
+            }
+            console.log(this.crimesByYear);
+        }
         console.log(this.data);
+        // console.log(this.crimesByYear);
     }
-
+    
     /**
      * Get an array with all countries for wich we have datas to show
      */
@@ -55,10 +57,29 @@ class LineChart {
             dataset.label = this.countries[i];
             dataset.data = this.data[i]; 
             this.datasets.push(dataset);
+            // console.log(dataset);
         }
-        console.log(this.datasets);
     }
 
+    // returnChartParameter() {
+    //     {
+    //         type: this.type;
+    //         data: {
+    //             labels: this.countries;
+    //             datasets: this.datasets;{
+    //                 label: country;
+    //                 data: [données]
+    //             }, {
+    //                 label: country 2;
+
+    //             }
+    //         }
+    //         options: {
+    //             scales: {
+    //                 yAxes: [{}]
+    //             }
+    //         }
+    //     }
 
 //     return (type: this.type,
 //     data: {
@@ -80,7 +101,10 @@ class LineChart {
  }
 
 finalObject = new LineChart('table1');
+finalObject.getCountries();
 finalObject.getCrimes();
+finalObject.getDatasets();
+
 // finalObject.getCountries();
 // finalObject.getDatasets();
 // chart = new Chart(ctx, finalObject);
