@@ -25,6 +25,16 @@ class LineChart {
         for (let i = 2; i < this.originData.length; i++) {
             this.data.push(this.originData[i].slice(2));
         }
+
+        // let crimesInt = [];
+        // for (let i = 0; i < this.data.length; i++) {
+        //    for (let j = 0; j < this.data[i].length; j++) {
+        //        crimesInt[i] = 'ok';
+               
+        //    }
+            
+        // }
+        console.log(this.data);
     }
 
     /**
@@ -50,24 +60,24 @@ class LineChart {
     }
 
 
-    return (type: this.type,
-    data: {
-        labels: this.labels,
-        datasets: [{
-            label: this.label,
-            data: this.data,
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    })  
-}
+//     return (type: this.type,
+//     data: {
+//         labels: this.labels,
+//         datasets: [{
+//             label: this.label,
+//             data: this.data,
+//         }]
+//     },
+//     options: {
+//         scales: {
+//             yAxes: [{
+//                 ticks: {
+//                     beginAtZero: true
+//                 }
+//             }]
+//         }
+//     })  
+ }
 
 finalObject = new LineChart('table1');
 finalObject.getCrimes();
