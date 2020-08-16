@@ -22,23 +22,9 @@ class LineChart {
      * Get an array with crimes' numbers
      */
     getCrimes() {
-        for (let i = 2; i < this.originData.length; i++) {
-            this.data.push(parseInt(this.originData[i].slice(2)));
-        }
-        for (let i = 0; i < this.data.length; i++) {
-            for (let j = 0; j < 11; j++) {
-                if (this.data[i][j]!=':') {
-                    this.crimesByYear[i] = parseInt(this.data[i][j]);
-                } else {
-                    this.crimesByYear[i] = 0;
-                }  
-            }
-            console.log(this.crimesByYear);
-        }
-        console.log(this.data);
-        // console.log(this.crimesByYear);
+        
     }
-    
+
     /**
      * Get an array with all countries for wich we have datas to show
      */
@@ -55,7 +41,7 @@ class LineChart {
         let dataset = {};
         for (let i = 0; i < this.countries.length; i++) {
             dataset.label = this.countries[i];
-            dataset.data = this.data[i]; 
+            dataset.data = this.data[i];
             this.datasets.push(dataset);
             // console.log(dataset);
         }
@@ -81,24 +67,24 @@ class LineChart {
     //         }
     //     }
 
-//     return (type: this.type,
-//     data: {
-//         labels: this.labels,
-//         datasets: [{
-//             label: this.label,
-//             data: this.data,
-//         }]
-//     },
-//     options: {
-//         scales: {
-//             yAxes: [{
-//                 ticks: {
-//                     beginAtZero: true
-//                 }
-//             }]
-//         }
-//     })  
- }
+    //     return (type: this.type,
+    //     data: {
+    //         labels: this.labels,
+    //         datasets: [{
+    //             label: this.label,
+    //             data: this.data,
+    //         }]
+    //     },
+    //     options: {
+    //         scales: {
+    //             yAxes: [{
+    //                 ticks: {
+    //                     beginAtZero: true
+    //                 }
+    //             }]
+    //         }
+    //     })  
+}
 
 finalObject = new LineChart('table1');
 finalObject.getCountries();
