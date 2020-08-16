@@ -5,8 +5,7 @@ class LineChart {
     this.type = 'line';
     this.years = [];
     this.countries = [];
-    this.datasets = [];
-    this.data = [];
+    this.data = { labels: '', datasets: { label: '', data: []} };
     this.crimesByYear = [];
     this.crimesByYearInt = [];
     this.fill = false;
@@ -45,12 +44,11 @@ class LineChart {
   /**
    * Get an array with datasets' objects
    */
-  getDatasets() {
-    let datasets = {};
+  getData() {
     for (let i = 0; i < this.countries.length; i++) {
-      let dataset = { label: this.countries[i], data: this.crimesByYear[i]};
-                datasets.push(dataset);
+      this.data[i] = { labels: [this.years[i]], datasets: { label: [this.countries[i]], data: [this.crimesByYear[i]]} };
     }
+    console.log(this.data);
   }
 
   // returnChartParameter() {
@@ -93,9 +91,10 @@ class LineChart {
 }
 
 finalObject = new LineChart('table1');
+finalObject.getYears();
 finalObject.getCountries();
-finalObject.getCrimes(this.countries);
-finalObject.getDatasets();
+finalObject.getCrimes();
+finalObject.getData();
 
 // finalObject.getCountries();
 // finalObject.getDatasets();
