@@ -5,10 +5,12 @@ class LineChart {
     this.type = 'line';
     this.years = [];
     this.countries = [];
-    this.data = { labels: '', datasets: { label: '', data: []} };
+    this.data = {};
+    this.datasets = [];
     this.crimesByYear = [];
     this.crimesByYearInt = [];
     this.fill = false;
+    this.canvas;
   }
 
   /**
@@ -44,59 +46,55 @@ class LineChart {
   /**
    * Get an array with datasets' objects
    */
-  getData() {
+  getDatasets() {
     for (let i = 0; i < this.countries.length; i++) {
-      this.data[i] = { labels: [this.years[i]], datasets: { label: [this.countries[i]], data: [this.crimesByYear[i]]} };
+      this.datasets[i] = { label: [this.countries[i]], data: [this.crimesByYear[i]] };
     }
-    console.log(this.data);
+    console.log(this.datasets);
   }
 
-  // returnChartParameter() {
-  //     {
-  //         type: this.type;
-  //         data: {
-  //             labels: this.countries;
-  //             datasets: this.datasets;{
-  //                 label: country;
-  //                 data: [données]
-  //             }, {
-  //                 label: country 2;
+  returnChartParameter() {
+    this.data = {
+      type: this.type,
+      data: {
+        labels: this.years,
+        datasets: this.datasets
+      }
+    }
+    return this.data;
+  }
 
-  //             }
-  //         }
-  //         options: {
-  //             scales: {
-  //                 yAxes: [{}]
-  //             }
-  //         }
-  //     }
+  createCanvas() {
+    this.canvas = document.createElement('canvas');
+    this.canvas.setAttribute('id', 'canvas');
+    this.canvas.width = 800;
+    this.canvas.height = 500;
+    table1.before(this.canvas);
+    this.ctx = document.getElementById('canvas');
+  }
 
-  //     return (type: this.type,
-  //     data: {
-  //         labels: this.labels,
-  //         datasets: [{
-  //             label: this.label,
-  //             data: this.data,
-  //         }]
-  //     },
-  //     options: {
-  //         scales: {
-  //             yAxes: [{
-  //                 ticks: {
-  //                     beginAtZero: true
-  //                 }
-  //             }]
-  //         }
-  //     })  
 }
 
-finalObject = new LineChart('table1');
+finalObject = new LineChart('table2');
 finalObject.getYears();
 finalObject.getCountries();
 finalObject.getCrimes();
-finalObject.getData();
+finalObject.getDatasets();
+finalObject.createCanvas();
 
-// finalObject.getCountries();
-// finalObject.getDatasets();
-// chart = new Chart(ctx, finalObject);
+let chart = new Chart(document.getElementById('canvas'), {
+  type: 'line',
+  data: {
+    labels: finalObject.years,
+    datasets: finalObject.datasets
+  }, options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});
 
