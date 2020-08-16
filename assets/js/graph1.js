@@ -33,7 +33,6 @@ class LineChart {
       }
     })
   }
-  
   /**
    * Get an array with all countries for wich we have datas to show
    */
