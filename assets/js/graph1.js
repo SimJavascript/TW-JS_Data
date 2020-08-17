@@ -85,7 +85,7 @@ finalObject.createCanvas();
 let chart = new Chart(document.getElementById('canvas'), {
   type: 'line',
   data: {
-    labels: finalObject.years,
+    labels: [finalObject.years],
     datasets: finalObject.datasets
   }, options: {
     scales: {

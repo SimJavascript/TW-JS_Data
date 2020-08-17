@@ -1,51 +1,51 @@
-class LineChart {
-    constructor(table) {
-        this.originTable = document.getElementById(table);
-        this.originData = [...this.originTable.rows].map(t => [...t.children].map(u => u.innerText));
-        this.type = 'line';
-        this.years = [];
-        this.countries = [];
-        this.datasets = [];
-        this.data = [];
-        this.crimesByYear = [];
-        this.fill = false;
-    }
+// class LineChart {
+//     constructor(table) {
+//         this.originTable = document.getElementById(table);
+//         this.originData = [...this.originTable.rows].map(t => [...t.children].map(u => u.innerText));
+//         this.type = 'line';
+//         this.years = [];
+//         this.countries = [];
+//         this.datasets = [];
+//         this.data = [];
+//         this.crimesByYear = [];
+//         this.fill = false;
+//     }
 
     /**
      * Get an array with all years to display as label on X-axis
      */
-    getYears() {
-        this.years = this.originData[1].filter(function (el) { return el; });
-    }
+    // getYears() {
+    //     this.years = this.originData[1].filter(function (el) { return el; });
+    // }
 
     /**
      * Get an array with crimes' numbers
      */
-    getCrimes() {
+    // getCrimes() {
         
-    }
+    // }
 
     /**
      * Get an array with all countries for wich we have datas to show
      */
-    getCountries() {
-        for (let i = 2; i < this.originData.length; i++) {
-            this.countries.push(this.originData[i][1]);
-        }
-    }
+    // getCountries() {
+    //     for (let i = 2; i < this.originData.length; i++) {
+    //         this.countries.push(this.originData[i][1]);
+    //     }
+    // }
 
     /**
      * Get an array with datasets' objects
      */
-    getDatasets() {
-        let dataset = {};
-        for (let i = 0; i < this.countries.length; i++) {
-            dataset.label = this.countries[i];
-            dataset.data = this.data[i];
-            this.datasets.push(dataset);
-            // console.log(dataset);
-        }
-    }
+    // getDatasets() {
+    //     let dataset = {};
+    //     for (let i = 0; i < this.countries.length; i++) {
+    //         dataset.label = this.countries[i];
+    //         dataset.data = this.data[i];
+    //         this.datasets.push(dataset);
+    //         // console.log(dataset);
+    //     }
+    // }
 
     // returnChartParameter() {
     //     {
@@ -86,10 +86,10 @@ class LineChart {
     //     })  
 }
 
-finalObject = new LineChart('table1');
-finalObject.getCountries();
-finalObject.getCrimes();
-finalObject.getDatasets();
+// finalObject = new LineChart('table1');
+// finalObject.getCountries();
+// finalObject.getCrimes();
+// finalObject.getDatasets();
 
 // finalObject.getCountries();
 // finalObject.getDatasets();

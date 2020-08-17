@@ -30,6 +30,7 @@ let allData = [...table1.rows].map(t => [...t.children].map(u => u.innerText));
 let years = allData[1].filter(function (el) { return el; });
 
 console.log(allData);
+console.log(years);
 
 let country = [];
 for (let i = 2; i < allData.length; i++) {
@@ -40,11 +41,11 @@ let crimes = [];
 for (let i = 2; i < allData.length; i++) {
     crimes.push(allData[i].slice(2));
 }
-
+console.log(crimes);
 
 let labels = years;
-var ctx = document.getElementById("myChart").getContext('2d');
-var myChart = new Chart(ctx, {
+let ctx = document.getElementById("myChart").getContext('2d');
+let myChart = new Chart(ctx, {
     type: 'line',
     data: {
         labels: years,
