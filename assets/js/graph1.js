@@ -10,7 +10,6 @@ class LineChart {
     this.crimesByYear = [];
     this.crimesByYearInt = [];
     this.fill = false;
-    this.canvas;
   }
 
   /**
@@ -48,7 +47,7 @@ class LineChart {
    */
   getDatasets() {
     for (let i = 0; i < this.countries.length; i++) {
-      this.datasets[i] = { label: [this.countries[i]], data: [this.crimesByYear[i]] };
+      this.datasets[i] = { label: this.countries[i], data: this.crimesByYear[i] };
     }
     console.log(this.datasets);
   }
@@ -75,7 +74,7 @@ class LineChart {
 
 }
 
-finalObject = new LineChart('table2');
+finalObject = new LineChart('table1');
 finalObject.getYears();
 finalObject.getCountries();
 finalObject.getCrimes();
@@ -85,7 +84,7 @@ finalObject.createCanvas();
 let chart = new Chart(document.getElementById('canvas'), {
   type: 'line',
   data: {
-    labels: [finalObject.years],
+    labels: finalObject.years,
     datasets: finalObject.datasets
   }, options: {
     scales: {
@@ -97,4 +96,5 @@ let chart = new Chart(document.getElementById('canvas'), {
     }
   }
 });
+
 
